@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div style="width:100px;height:100px;background-color:green;" onclick="runJavascript()"></div>
+    <script>
+        var runJavascriptDone = false;
+        var replyValue = false;
+
+        function runJavascript() {
+            var message = "confirm";
+            if (runJavascriptDone) {
+                if (replyValue)
+                    message = "OK";
+                else
+                    message = "Cancel";
+            }
+            else
+                runJavascriptDone = true;
+
+            replyValue = window.confirm(message);
+        }
+    </script>
+</body>
+</html>

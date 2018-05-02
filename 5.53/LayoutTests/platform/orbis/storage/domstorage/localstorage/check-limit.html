@@ -1,0 +1,47 @@
+<html>
+<head>
+<script>
+
+if (window.testRunner)
+    testRunner.dumpAsText();
+
+function log(a)
+{
+    document.getElementById("logger").innerHTML += a + "<br>";
+}
+
+function runTest()
+{
+    if (!window.localStorage) {
+        log("window.localStorage DOES NOT exist");
+        return;
+    }
+    localStorage.clear();
+
+    log("Length is " + localStorage.length);
+
+    var setSize = 1024 * 100;
+    var setData = new Array(setSize+1).join("a");
+    var index = 0;
+    var roop = true;
+    while (roop) {
+        try {
+            localStorage.setItem("check-limit"+index, setData);
+        } catch(e) {
+            roop = false;
+        }
+        index++;
+    }
+
+    log("Length is " + localStorage.length);
+    
+    localStorage.clear();
+}
+
+</script>
+</head>
+<body onload="runTest();">
+This test tries limit check on localStorage<br>
+<div id="logger"></div>
+</body>
+</html>

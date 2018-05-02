@@ -1,0 +1,4 @@
+This test tries limit check on localStorage
+Length is 0
+Length is 102
+

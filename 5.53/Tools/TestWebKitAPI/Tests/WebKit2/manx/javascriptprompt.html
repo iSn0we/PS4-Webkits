@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div style="width:100px;height:100px;background-color:green;" onclick="runJavascript()"></div>
+    <script>
+        var defaultValue = "defaultValue";
+
+        function runJavascript() {
+            var message = "prompt";
+            var replyValue = window.prompt(message, defaultValue);
+            defaultValue = replyValue;
+        }
+    </script>
+</body>
+</html>

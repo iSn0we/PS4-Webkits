@@ -1,0 +1,158 @@
+Test permutations of various cache headers
+
+On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
+
+
+running 42 tests
+
+response headers: {"Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"max-age=0","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"max-age=100","Status":"200"}
+response source: Disk cache
+
+response headers: {"Expires":"now(-100)","Status":"200"}
+response source: Network
+
+response headers: {"Expires":"now(100)","Status":"200"}
+response source: Disk cache
+
+response headers: {"ETag":"match","Status":"200"}
+response source: Network
+
+response headers: {"ETag":"nomatch","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"no-store","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"max-age=0, no-store","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"max-age=100, no-store","Status":"200"}
+response source: Network
+
+response headers: {"Expires":"now(-100)","Cache-control":"no-store","Status":"200"}
+response source: Network
+
+response headers: {"Expires":"now(100)","Cache-control":"no-store","Status":"200"}
+response source: Network
+
+response headers: {"ETag":"match","Cache-control":"no-store","Status":"200"}
+response source: Network
+
+response headers: {"ETag":"nomatch","Cache-control":"no-store","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"no-cache","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"max-age=0, no-cache","Status":"200"}
+response source: Network
+
+response headers: {"Cache-control":"max-age=100, no-cache","Status":"200"}
+response source: Network
+
+response headers: {"Expires":"now(-100)","Cache-control":"no-cache","Status":"200"}
+response source: Network
+
+response headers: {"Expires":"now(100)","Cache-control":"no-cache","Status":"200"}
+response source: Network
+
+response headers: {"ETag":"match","Cache-control":"no-cache","Status":"200"}
+response source: Disk cache after validation
+
+response headers: {"ETag":"nomatch","Cache-control":"no-cache","Status":"200"}
+response source: Network
+
+response headers: {"Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Cache-control":"max-age=0","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Cache-control":"max-age=100","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache
+
+response headers: {"Expires":"now(-100)","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Expires":"now(100)","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache
+
+response headers: {"ETag":"match","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"ETag":"nomatch","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Cache-control":"no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Cache-control":"max-age=0, no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Cache-control":"max-age=100, no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Expires":"now(-100)","Cache-control":"no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Expires":"now(100)","Cache-control":"no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"ETag":"match","Cache-control":"no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"ETag":"nomatch","Cache-control":"no-store","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Cache-control":"no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Cache-control":"max-age=0, no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Cache-control":"max-age=100, no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Expires":"now(-100)","Cache-control":"no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Expires":"now(100)","Cache-control":"no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"ETag":"match","Cache-control":"no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"ETag":"nomatch","Cache-control":"no-cache","Status":"304"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+PASS successfullyParsed is true
+
+TEST COMPLETE
+

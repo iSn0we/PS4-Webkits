@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div style="width:100px;height:100px;" onclick="proceedSteps()"></div>
+
+    <script>
+        var step = 0;
+
+        function notifyMessage(message) {
+            window.confirm(message);
+        }
+
+        function getLocalStorage() {
+            var message = "Unregistered";
+
+            if (('localStorage' in window) && (window.localStorage !== null)) {
+                var item = localStorage.getItem('testValue');
+                if (item !== null)
+                    message = "Registered";
+            } else
+                message = "Undefined";
+
+            notifyMessage(message);
+        }
+
+        function setLocalStorage() {
+            if (('localStorage' in window) && (window.localStorage !== null))
+                localStorage.setItem('testValue', 'value');
+        }
+
+        function proceedSteps() {
+            if (!step) {
+                setLocalStorage();
+                getLocalStorage();
+            } else if (step == 1)
+                getLocalStorage();
+            else
+                notifyMessage("error");
+
+            step++;
+        }
+    </script>
+</body>
+</html>

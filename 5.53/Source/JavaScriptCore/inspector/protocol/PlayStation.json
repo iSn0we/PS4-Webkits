@@ -1,0 +1,39 @@
+{
+    "domain": "PlayStation",
+    "description": "",
+    "types": [
+        {
+            "id": "ACMemoryInfo",
+            "type": "object",
+            "properties": [
+                { "name": "heap", "type": "integer" },
+                { "name": "texture", "type": "integer" },
+                { "name": "surfaces", "type": "integer" },
+                { "name": "programs", "type": "integer" },
+                { "name": "buffers", "type": "integer" },
+                { "name": "commandBuffers", "type": "integer" },
+                { "name": "total", "type": "integer" },
+                { "name": "maxAllowed", "type": "integer" },
+                { "name": "fmemMappedSizeTotal", "type": "integer" },
+                { "name": "fmemMappedSizeLimit", "type": "integer" }
+            ],
+            "description": "AC memory information."
+        }
+    ],
+    "commands": [
+        {
+            "name": "getACMemoryInfo",
+            "returns": [
+                { "name": "result", "$ref": "ACMemoryInfo", "description": "" }
+            ],
+            "description": ""
+        },
+        {
+            "name": "showLayerTable",
+            "parameters": [
+                { "name": "show", "type": "boolean", "description": "True for showing the layer table" }
+            ],
+            "description": "Show/Hide the layer table."
+        }
+    ]
+}

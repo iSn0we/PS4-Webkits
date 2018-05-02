@@ -1,0 +1,59 @@
+Test of cache-control options.
+
+On success, you will see a series of "PASS" messages, followed by "TEST COMPLETE".
+
+
+running 12 tests
+
+response headers: {"Status":"304","Cache-control":"no-store"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Status":"304","Cache-control":"no-cache"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Status":"304","Cache-control":"must-revalidate"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Status":"304","Cache-control":"proxy-revalidate"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Status":"304","Cache-control":"max-age=0"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Status":"304","Cache-control":"max-age=100"}
+Status code of the first response is overriden by 200
+response source: Disk cache
+
+response headers: {"Status":"304","Cache-control":"s-maxage=0"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Status":"304","Cache-control":"s-maxage=100"}
+Status code of the first response is overriden by 200
+response source: Disk cache
+
+response headers: {"Status":"304","Expires":"now(-100)","Cache-control":"max-age=100"}
+Status code of the first response is overriden by 200
+response source: Disk cache
+
+response headers: {"Status":"304","Expires":"now(100)","Cache-control":"max-age=0"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+response headers: {"Status":"304","Cache-control":"no-store,max-age=100"}
+Status code of the first response is overriden by 200
+response source: Network
+
+response headers: {"Status":"304","Cache-control":"no-cache,max-age=100"}
+Status code of the first response is overriden by 200
+response source: Disk cache after validation
+
+PASS successfullyParsed is true
+
+TEST COMPLETE
+

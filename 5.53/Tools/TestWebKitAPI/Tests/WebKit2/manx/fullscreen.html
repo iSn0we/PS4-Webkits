@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body onkeydown="toggleFullScreen()">
+<div id="fullscreen" style="width:100px;height:100px;background-color:green;" onclick="toggleFullScreen()"></div>
+<script>
+function toggleFullScreen() {
+    var target = document.getElementById("fullscreen");
+    if (target) {
+        if (document.webkitIsFullScreen) {
+            document.webkitExitFullscreen();
+        }
+        else {
+            target.webkitRequestFullscreen();
+        }
+    }
+}
+</script>
+</body>
+</html>

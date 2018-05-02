@@ -1,0 +1,214 @@
+2015-09-08  Andy Estes  <aestes@apple.com>
+
+        Reverted r189001.
+
+2015-09-03  Babak Shafiei  <bshafiei@apple.com>
+
+        Merge r188311.
+
+    2015-08-11  Alexey Proskuryakov  <ap@apple.com>
+
+            Make ASan build not depend on asan.xcconfig
+            https://bugs.webkit.org/show_bug.cgi?id=147840
+            rdar://problem/21093702
+
+            Reviewed by Daniel Bates.
+
+            * asan/asan.xcconfig:
+            * asan/webkit-asan-ignore.txt: Removed. It's no longer needed, as unsafe functions
+            are now marked in source code.
+
+2015-08-26  Andy Estes  <aestes@apple.com>
+
+        Merge r188988.
+
+    2015-08-26  Andy Estes  <aestes@apple.com>
+
+            Crash when following a Google search link to Twitter with Limit Adult Content enabled
+            https://bugs.webkit.org/show_bug.cgi?id=147651
+
+            Rubber-stamped by Brady Eidson.
+
+            Taught TestRunner how to decide the navigation policy after a delay.
+
+            * WebKitTestRunner/InjectedBundle/Bindings/TestRunner.idl:
+            * WebKitTestRunner/InjectedBundle/InjectedBundlePage.cpp:
+            (WTR::InjectedBundlePage::decidePolicyForNavigationAction):
+            * WebKitTestRunner/InjectedBundle/TestRunner.cpp:
+            (WTR::TestRunner::setShouldDecideNavigationPolicyAfterDelay):
+            * WebKitTestRunner/InjectedBundle/TestRunner.h:
+            (WTR::TestRunner::shouldDecideNavigationPolicyAfterDelay):
+            * WebKitTestRunner/TestController.cpp:
+            (WTR::TestController::initialize):
+            (WTR::TestController::resetStateToConsistentValues):
+            (WTR::TestController::decidePolicyForNavigationAction):
+            * WebKitTestRunner/TestController.h:
+            (WTR::TestController::setShouldDecideNavigationPolicyAfterDelay):
+            * WebKitTestRunner/TestInvocation.cpp:
+            (WTR::TestInvocation::didReceiveMessageFromInjectedBundle):
+
+2015-08-14  Babak Shafiei  <bshafiei@apple.com>
+
+        Merge r188486.
+
+    2015-08-13  Andy Estes  <aestes@apple.com>
+
+            [Cocoa] Downloads do not start if policy decision is made asynchronously
+            https://bugs.webkit.org/show_bug.cgi?id=147985
+
+            Reviewed by Brady Eidson.
+
+            Added a new API test.
+
+            * TestWebKitAPI/Tests/WebKit2Cocoa/Download.mm:
+            (-[AsynchronousDownloadNavigationDelegate webView:decidePolicyForNavigationResponse:decisionHandler:]):
+            (-[AsynchronousDownloadDelegate _downloadDidStart:]):
+            (TEST):
+
+2015-08-06  Dana Burkart  <dburkart@apple.com>
+
+        Merge r187962. rdar://problem/21827815
+
+    2015-08-05  Daniel Bates  <dabates@apple.com>
+
+            REGRESSION (r185111): Clicking phone numbers doesn't prompt to call sometimes
+            https://bugs.webkit.org/show_bug.cgi?id=147678
+            <rdar://problem/21827815>
+
+            Reviewed by Brady Eidson.
+
+            Add a test to ensure that we restore the "should open external URLs" policy on
+            page reload after the web content process crashes.
+
+            * TestWebKitAPI/TestWebKitAPI.xcodeproj/project.pbxproj:
+            * TestWebKitAPI/Tests/WebKit2/should-open-external-schemes.html: Added.
+            * TestWebKitAPI/Tests/WebKit2Cocoa/ShouldOpenExternalURLsInNewWindowActions.mm:
+            (TEST):
+
+2015-08-06  Dana Burkart  <dburkart@apple.com>
+
+        Merge r187886. rdar://problem/15779101
+
+    2015-08-04  Alexey Proskuryakov  <ap@apple.com>
+
+            Implement NPAPI redirect handling
+            https://bugs.webkit.org/show_bug.cgi?id=138675
+            rdar://problem/15779101
+
+            Patch by Jeffrey Pfau, updated and tweaked by me.
+
+            Reviewed by Anders Carlsson.
+
+            * DumpRenderTree/DumpRenderTree.vcxproj/TestNetscapePlugin/TestNetscapePlugin.vcxproj:
+            * DumpRenderTree/DumpRenderTree.vcxproj/TestNetscapePlugin/TestNetscapePlugin.vcxproj.filters:
+            * DumpRenderTree/DumpRenderTree.xcodeproj/project.pbxproj:
+            * DumpRenderTree/TestNetscapePlugIn/CMakeLists.txt:
+            * DumpRenderTree/TestNetscapePlugIn/PluginTest.cpp:
+            (PluginTest::NPP_URLNotify):
+            (PluginTest::NPP_URLRedirectNotify):
+            (PluginTest::NPP_GetValue):
+            (PluginTest::NPN_GetURLNotify):
+            (PluginTest::NPN_PostURLNotify):
+            (PluginTest::NPN_GetValue):
+            (PluginTest::NPN_ReleaseVariantValue):
+            (PluginTest::NPN_URLRedirectResponse):
+            (PluginTest::NPN_ConvertPoint):
+            * DumpRenderTree/TestNetscapePlugIn/PluginTest.h:
+            * DumpRenderTree/TestNetscapePlugIn/Tests/URLRedirect.cpp: Added.
+            (URLRedirect::URLRedirect):
+            (URLRedirect::ScriptableObject::hasMethod):
+            (URLRedirect::ScriptableObject::get):
+            (URLRedirect::ScriptableObject::serviceAsync):
+            (URLRedirect::ScriptableObject::invoke):
+            (URLRedirect::NPP_GetValue):
+            (URLRedirect::NPP_URLNotify):
+            (URLRedirect::NPP_URLRedirectNotify):
+            * DumpRenderTree/TestNetscapePlugIn/main.cpp:
+            (NP_GetEntryPoints):
+            (NPP_URLNotify):
+            (NPP_URLRedirectNotify):
+            (NPP_GetValue):
+
+2015-07-27  Babak Shafiei  <bshafiei@apple.com>
+
+        Merge r187371.
+
+    2015-07-24  Chris Fleizach  <cfleizach@apple.com>
+
+            AX: scrollable elements do not allow 3-finger swipe
+            https://bugs.webkit.org/show_bug.cgi?id=141893
+
+            Reviewed by Mario Sanchez Prada.
+
+            Support global notification listeners for iOS code.
+            Fix an issue in DRT where the dictionary of data was not being passed back to the layout test for the notication callback.
+            Implement scrollUp/Down/Left/Right.
+
+            * DumpRenderTree/AccessibilityController.h:
+            * DumpRenderTree/AccessibilityUIElement.cpp:
+            (increaseTextSelectionCallback):
+            (scrollPageUpCallback):
+            (scrollPageDownCallback):
+            (scrollPageLeftCallback):
+            (scrollPageRightCallback):
+            (decreaseTextSelectionCallback):
+            (getElementTextLengthCallback):
+            (AccessibilityUIElement::getJSClass):
+            * DumpRenderTree/AccessibilityUIElement.h:
+            * DumpRenderTree/ios/AccessibilityControllerIOS.mm:
+            (AccessibilityController::~AccessibilityController):
+            (AccessibilityController::elementAtPoint):
+            (AccessibilityController::addNotificationListener):
+            (AccessibilityController::platformResetToConsistentState):
+            (AccessibilityController::removeNotificationListener):
+            * DumpRenderTree/ios/AccessibilityUIElementIOS.mm:
+            (AccessibilityUIElement::AccessibilityUIElement):
+            (AccessibilityUIElement::subrole):
+            (AccessibilityUIElement::scrollPageUp):
+            (AccessibilityUIElement::scrollPageDown):
+            (AccessibilityUIElement::scrollPageLeft):
+            (AccessibilityUIElement::scrollPageRight):
+            (AccessibilityUIElement::roleDescription):
+            * DumpRenderTree/mac/AccessibilityNotificationHandler.mm:
+            (-[AccessibilityNotificationHandler _notificationReceived:]):
+            * WebKitTestRunner/InjectedBundle/AccessibilityController.h:
+            * WebKitTestRunner/InjectedBundle/AccessibilityUIElement.cpp:
+            (WTR::AccessibilityUIElement::linkedElement):
+            (WTR::AccessibilityUIElement::headerElementAtIndex):
+            (WTR::AccessibilityUIElement::assistiveTechnologySimulatedFocus):
+            (WTR::AccessibilityUIElement::scrollPageUp):
+            (WTR::AccessibilityUIElement::scrollPageDown):
+            (WTR::AccessibilityUIElement::scrollPageLeft):
+            (WTR::AccessibilityUIElement::scrollPageRight):
+            * WebKitTestRunner/InjectedBundle/AccessibilityUIElement.h:
+            * WebKitTestRunner/InjectedBundle/Bindings/AccessibilityUIElement.idl:
+            * WebKitTestRunner/InjectedBundle/ios/AccessibilityControllerIOS.mm:
+            (WTR::AccessibilityController::addNotificationListener):
+            (WTR::AccessibilityController::removeNotificationListener):
+            * WebKitTestRunner/InjectedBundle/ios/AccessibilityUIElementIOS.mm:
+            (WTR::AccessibilityUIElement::AccessibilityUIElement):
+            (WTR::AccessibilityUIElement::assistiveTechnologySimulatedFocus):
+            (WTR::AccessibilityUIElement::scrollPageUp):
+            (WTR::AccessibilityUIElement::scrollPageDown):
+            (WTR::AccessibilityUIElement::scrollPageLeft):
+            (WTR::AccessibilityUIElement::scrollPageRight):
+            (WTR::AccessibilityUIElement::increaseTextSelection):
+
+2015-07-23  Lucas Forschler  <lforschler@apple.com>
+
+        Merge r187125
+
+    2015-07-21  Filip Pizlo  <fpizlo@apple.com>
+
+            Fixed VM pool allocation should have a reserve for allocations that cannot fail
+            https://bugs.webkit.org/show_bug.cgi?id=147154
+            rdar://problem/21847618
+
+            Reviewed by Geoffrey Garen.
+
+            Add a new test mode where we artificially limit JIT memory to 50KB. If our JIT OOM
+            mitigations work, these should all pass. Prior to this patch there were >20 failures.
+
+            * Scripts/run-jsc-stress-tests:
+
+== Rolled over to ChangeLog-2015-07-23 ==

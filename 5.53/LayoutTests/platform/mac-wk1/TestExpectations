@@ -1,0 +1,128 @@
+# This file should contain entries for expectations that are specific
+# to the Apple Mac port running WebKit1 (DumpRenderTree)
+
+###### This file has two sections. When adding new tests, make sure to
+###### add to the right section:
+
+### (1) Failures with bug reports
+### (2) Failures without bug reports
+
+########################################
+### START OF (1) Failures with bug reports
+
+# Asserts in WebKit1-debug due to a preexisting issue with overflow rect computation
+webkit.org/b/118269 compositing/geometry/fixed-position-flipped-writing-mode.html
+
+# Before Yosemite, the test did not actually test compositing vs. non-compositing on WebKit1, so it passed accidentally.
+webkit.org/b/132421 [ Yosemite+ ] fast/multicol/fixed-stack.html [ ImageOnlyFailure ]
+
+webkit.org/b/104104 fast/overflow/scrollbar-click-retains-focus.html [ Failure ]
+
+webkit.org/b/82981 http/tests/misc/favicon-loads-with-icon-loading-override.html [ Failure ]
+
+webkit.org/b/90724 compositing/iframes/iframe-size-from-zero.html [ Failure ]
+
+webkit.org/b/138697 fast/events/overflow-scroll-fake-mouse-move.html [ Pass Failure ]
+
+webkit.org/b/82747 fast/events/scroll-div-with-prevent-default-in-subframe.html [ Failure ]
+
+webkit.org/b/112533 media/auto-play-in-sandbox-with-allow-scripts.html [ Pass Timeout ]
+
+webkit.org/b/139778 fullscreen/exit-full-screen-iframe.html [ Skip ]
+
+webkit.org/b/139862 editing/spelling/grammar-edit-word.html [ Skip ]
+
+webkit.org/b/144127 compositing/scrolling/touch-scroll-to-clip.html [ Pass Failure ]
+
+webkit.org/b/145432 media/video-transformed-by-javascript.html [ Failure ]
+
+webkit.org/b/146622 [ Yosemite Debug ] webgl/1.0.2/conformance/more/functions/copyTexImage2DBadArgs.html [ Pass Failure ]
+
+webkit.org/b/147683 platform/mac/fast/scrolling/scroll-div-with-nested-nonscrollable-iframe.html [ Skip ]
+
+### END OF (1) Failures with bug reports
+########################################
+
+########################################
+### START OF (2) Failures without bug reports
+
+# IndexedDB is not yet enabled in Mac WK1
+storage/indexeddb
+fast/history/page-cache-indexed-closed-db.html
+fast/history/page-cache-indexed-opened-db.html
+http/tests/security/cross-origin-indexeddb-allowed.html
+http/tests/security/cross-origin-indexeddb.html
+http/tests/security/cross-origin-worker-indexeddb-allowed.html
+http/tests/security/cross-origin-worker-indexeddb.html
+http/tests/security/no-indexeddb-from-sandbox.html
+crypto/subtle/rsa-indexeddb.html
+crypto/subtle/rsa-indexeddb-non-exportable.html
+
+# But since it is disabled at runtime, we should make sure it is correctly disabled
+storage/indexeddb/properties-disabled-at-runtime.html [ Pass ]
+
+# Fails with WebKit1 only.
+editing/secure-input/reset-state-on-navigation.html [ Failure ]
+
+# Plug-in blocking callback doesn't exist in WebKit1.
+plugins/unavailable-plugin-indicator-obscurity.html
+
+# Color input is not yet enabled on Mac WK1.
+fast/forms/color/input-color-onchange-event.html [ Skip ]
+
+# WK1 and WK2 mousemove events are subtly different in ways that break this test on WK1.
+fast/events/ghostly-mousemoves-in-subframe.html [ Skip ]
+
+# Disable snapshotting tests on WK1 only
+plugins/snapshotting
+
+# WK1 doesn't do pending WebGL policies 
+fast/canvas/webgl/useWhilePending.html [ Skip ]
+
+# Animated image throttling behaves differently on WK1.
+fast/images/animated-gif-body-outside-viewport.html [ Skip ]
+fast/images/animated-gif-window-resizing.html [ Skip ]
+fast/images/animated-gif-zooming.html [ Skip ]
+
+# Mavericks and prior do not support contentInset
+[ Mavericks ] platform/mac/fast/events/content-inset-hit-testing.html [ Skip ]
+[ Mavericks ] platform/mac/fast/events/content-inset-hit-testing-in-frame.html [ Skip ]
+[ Mavericks ] platform/mac/fast/scrolling/scroll-select-bottom-test.html [ Skip ]
+[ Mavericks ] platform/mac-wk1/fast/backgrounds/top-content-inset-fixed-attachment.html [ Skip ]
+
+# WK1 uses the native scrollview for scrolling by page.
+scrollbars/scrolling-backward-by-page-accounting-bottom-fixed-elements-on-keyboard-spacebar.html
+scrollbars/scrolling-backward-by-page-on-keyboard-spacebar.html
+scrollbars/scrolling-by-page-accounting-oversized-fixed-elements-on-keyboard-spacebar.html
+scrollbars/scrolling-by-page-accounting-top-fixed-elements-on-keyboard-spacebar.html
+scrollbars/scrolling-by-page-accounting-top-fixed-elements-with-negative-top-on-keyboard-spacebar.html
+scrollbars/scrolling-by-page-ignoring-hidden-fixed-elements-on-keyboard-spacebar.html
+scrollbars/scrolling-by-page-ignoring-transparent-fixed-elements-on-keyboard-spacebar.html
+scrollbars/scrolling-by-page-on-keyboard-spacebar.html
+
+compositing/rtl/rtl-fixed-overflow-scrolled.html [ Failure ]
+
+compositing/iframes/overlapped-nested-iframes.html [ Pass Failure ]
+
+# Disk cache is WK2 only
+http/tests/cache/disk-cache
+
+# There is not yet support for force events in WK1.
+fast/events/mouse-force-changed.html [ Skip ]
+fast/events/mouse-force-down.html [ Skip ]
+fast/events/mouse-force-up.html [ Skip ]
+
+[ Yosemite+ ] platform/mac/fast/ruby/ruby-expansion-cjk-2.html [ ImageOnlyFailure ]
+
+# ShouldOpenExternalURLs not yet supported in WK1
+loader/navigation-policy [ Skip ]
+
+[ Mavericks Debug ] fast/canvas/webgl/tex-image-and-sub-image-2d-with-video-rgba4444.html [ Pass Timeout ]
+[ Mavericks Debug ] fast/canvas/webgl/tex-image-and-sub-image-2d-with-video-rgba5551.html [ Pass Timeout ]
+[ Mavericks Debug ] fast/canvas/webgl/tex-image-and-sub-image-2d-with-video.html [ Pass Timeout ]
+[ Mavericks Debug ] fast/canvas/webgl/tex-image-and-uniform-binding-bugs.html [ Pass Timeout ]
+
+[ ElCapitan+ ] css3/masking/mask-repeat-space-padding.html [ ImageOnlyFailure ]
+
+### END OF (2) Failures without bug reports
+########################################

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <script src="../../../../resources/js-test-pre.js"></script>
+    <script>
+        var texts = ['Some simple text', 'དབུ་མེད་']; // tibetan script triggers complex path
+
+        function tests() {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+
+            ctx.font = "italic 14px CanvasTest";
+            for (var i = 0; i < texts.length; i++) {
+                var text = texts[i];
+                var metrics = ctx.measureText(text);
+                if ((metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight) < metrics.width)
+                    testFailed('width is not enough to accommodate Italic text')
+            }
+
+            ctx.font = "bold 14px CanvasTest";
+            for (var i = 0; i < texts.length; i++) {
+                var text = texts[i];
+                var metrics = ctx.measureText(text);
+                if ((metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight) != metrics.width)
+                    testFailed('width is not enough to accommodate bold text')
+            }
+        }
+        window.addEventListener('load', tests, true);
+    </script>
+</head>
+<body>
+<canvas id="canvas"></canvas> 
+<script src="../../../../resources/js-test-post.js"></script>
+</body>
+

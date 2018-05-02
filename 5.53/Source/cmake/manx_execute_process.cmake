@@ -1,0 +1,32 @@
+# Variables output, depends, list_dir and command should set
+
+set(run 0)
+
+foreach(i IN LISTS output)
+    if(EXISTS ${i})
+        if (NOT DEFINED oldest_output OR "${oldest_output}" IS_NEWER_THAN ${i})
+            set(oldest_output ${i})
+        endif()
+    else()
+        # message(STATUS "output ${i} does not exist")
+        set(run 1)
+    endif()
+endforeach()
+
+if (NOT run)
+    foreach(i IN LISTS depends)
+        if (NOT IS_ABSOLUTE ${i})
+            set(i ${list_dir}/${i})
+        endif()
+        if (${i} IS_NEWER_THAN ${oldest_output})
+            message(STATUS "depends ${i} is newer than the oldest output ${oldest_output}")
+            set(run 1)
+        endif()
+    endforeach()
+endif()
+
+if (run)
+    execute_process(COMMAND ${command})
+else()
+    # message(STATUS "skip")
+endif()

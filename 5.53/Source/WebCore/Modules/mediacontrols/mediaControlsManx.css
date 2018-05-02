@@ -1,0 +1,132 @@
+/*
+ * Copyright (C) 2013, 2014 Apple Inc.  All rights reserved.
+ * Copyright (C) 2016 Sony Interactive Entertainment Inc.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+audio {
+    width: 200px;
+    height: 30px;
+}
+
+::-webkit-media-controls {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display: -webkit-flex;
+    -webkit-align-items: stretch;
+    -webkit-justify-content: flex-end;
+    -webkit-flex-direction: column;
+}
+
+video::-webkit-media-text-track-container,
+audio::-webkit-media-text-track-container {
+    display: none;
+}
+
+video::-webkit-media-controls-panel-composited-parent {
+    width: 100%;
+    -webkit-transform: translateZ(0);
+}
+
+video::-webkit-media-controls-panel,
+audio::-webkit-media-controls-panel {
+    width: 100%;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.25s linear;
+    -webkit-box-align: start;
+    -webkit-box-pack: end;
+    -webkit-appearance: none;
+}
+
+video::-webkit-media-controls-panel.hidden,
+audio::-webkit-media-controls-panel.hidden {
+    display: none;
+}
+
+video::-webkit-media-controls-panel {
+    opacity: 0;
+}
+
+video::-webkit-media-controls-panel.show,
+video::-webkit-media-controls-panel.paused,
+video::-webkit-media-controls-panel:hover {
+    opacity: 1;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-panel {
+    display: none;
+}
+
+video::-webkit-media-controls-panel button,
+audio::-webkit-media-controls-panel button {
+    -webkit-appearance: none;
+    display: block;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+video::-webkit-media-controls-panel button:active,
+audio::-webkit-media-controls-panel button:active {
+    -webkit-filter: drop-shadow(white 0 0 10px);
+}
+
+video::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-play-button {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFdJREFUeNpi/P//PwM9ARMDncGgsfA9EP/Hgt8zMjIyIGMguI9LLTaDGXHEIc6IZYTaAleIPxEwjsbhqIWjFo5aOGrhqIXD0MIPRIrhriBHG1HUBgABBgCTCB2zWoxn4wAAAABJRU5ErkJggg==');
+    position: absolute;
+    width: 28px;
+    height: 24px;
+    top: 3px;
+    left: 20px;
+}
+
+video::-webkit-media-controls-play-button.paused,
+audio::-webkit-media-controls-play-button.paused {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJ1JREFUeNrslt0JgDAMhI10cSdSN6gb6AYZoRvEFCyUKP6gV1A8yPN3pL1rSUSqkqqrwvo+0Om0OpOOJyKPBpKsb02nMywGxhLAXCGCnzRwBNwykG+A0UArNhtgNNBqNAYCGnhoAA206koGP6TgI5Wv0yOA8cz6vdZy6Ft5F8gm+OGqQ/d0sK8Cb1fXGWCTShrxOmw1zf/FeDdwFmAADM1W7YjvTn4AAAAASUVORK5CYII=');
+}
+
+video::-webkit-media-controls-rewind-button,
+audio::-webkit-media-controls-rewind-button {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJhJREFUeNpi/P//PwMtAeOoBaRY0IAiwcjYQKphQLMUgFQ+EIPoQJggDKMAUg0G4vnoRoCNocQCoDIHLAZTbgHU4P3/8QPSLQAKJxBhMOkWQA2+/580gN8CIBAA4gIyDEaxADmZogfLByAWoCQLoOcDmlhAKIgSKA2igYtkHMk0gCbJlG4ZjW5FBSmFHc2L69Eqc+AtAAgwAKPiWYxgZuCxAAAAAElFTkSuQmCC');
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 3px;
+    left: 68px;
+}
+
+video::-webkit-media-controls-fullscreen-button,
+audio::-webkit-media-controls-fullscreen-button {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARRJREFUeNrsVtENgyAQLcYB7AaOwAh1ExyhG7hBu4FuYjeQEewEdgP6LjmbC0UTpSH98CUXUbh7HMI9lHPulBI5TMOKUKdS6rE1IBIo8SgXukca0LsF7MkAbo1bRpOdEiNE2CnGnoBwa9j3DLNrhHOnQeptTBbwpz3R8/4gvEKEV8ouljRAVstMM285akGqdyYod2mNmJ1/LKxMm0gxyyea953/0MK/ogkLMvs5FgcO/D+whW9cwLVXgIuImBpmAhxGqsWFO1t+HyLIJo5h+NvM0eTeYCpnxjusWzGy0Yq1Xyon2AehW9HF24s3hfRQC3mqYwjhT2WyEqtUrOmh+YXiozmFBCC54is+DskuUSr1NfEtwACw3xWYMe8I7wAAAABJRU5ErkJggg==');
+    position: absolute;
+    width: 28px;
+    height: 24px;
+    top: 3px;
+    right: 20px;
+}

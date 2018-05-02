@@ -1,0 +1,15 @@
+#include <WebKit/WKAuthenticationChallenge.h>
+#include <WebKit/WKAuthenticationDecisionListener.h>
+#include <WebKit/WKAXObject.h>
+#include <WebKit/WKBundleFrameManx.h>
+#include <WebKit/WKBundleManx.h>
+#include <WebKit/WKContextConfigurationRef.h>
+#include <WebKit/WKContextManx.h>
+#include <WebKit/WKContextMenuItem.h>
+#include <WebKit/WKCookieManagerManx.h>
+#include <WebKit/WKCredential.h>
+#include <WebKit/WKErrorManx.h>
+#include <WebKit/WKKeyValueStorageManager.h>
+#include <WebKit/WKPreferencesManx.h>
+#include <WebKit/WKPagePrivateManx.h>
+#include <WebKit/WKProtectionSpace.h>

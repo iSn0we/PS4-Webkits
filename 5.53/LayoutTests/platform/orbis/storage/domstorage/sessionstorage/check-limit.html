@@ -1,0 +1,43 @@
+<html>
+<head>
+<script>
+
+if (window.testRunner)
+    testRunner.dumpAsText();
+
+function log(a)
+{
+    document.getElementById("logger").innerHTML += a + "<br>";
+}
+
+function runTest()
+{
+    if (!window.sessionStorage) {
+        log("window.sessionStorage DOES NOT exist");
+        return;
+    }
+    log("Length is " + sessionStorage.length);
+
+    var setSize = 1024 * 100;
+    var setData = new Array(setSize+1).join("a");
+    var index = 0;
+    var roop = true;
+    while (roop) {
+        try {
+            sessionStorage.setItem("check-limit"+index, setData);
+        } catch(e) {
+            roop = false;
+        }
+        index++;
+    }
+
+    log("Length is " + sessionStorage.length);
+}
+
+</script>
+</head>
+<body onload="runTest();">
+This test tries limit check on sessionStorage<br>
+<div id="logger"></div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body onload="window.scrollBy(200, 200);">
+    <div style="width:2000px;height:3000px;background-color:green;" onclick="checkscrollposition()"></div>
+    <script>
+        function checkscrollposition() {
+            var scrollx = window.pageXOffset
+            var scrolly = window.pageYOffset
+            window.alert(scrollx + ":" + scrolly);
+        }
+    </script>
+</body>
+</html>

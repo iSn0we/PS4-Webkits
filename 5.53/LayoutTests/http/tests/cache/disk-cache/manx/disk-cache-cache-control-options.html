@@ -1,0 +1,32 @@
+<script src="/js-test-resources/js-test-pre.js"></script>
+<script src="resources/cache-test.js"></script>
+<body>
+<script>
+
+var tests =
+[
+ { responseHeaders: {'Status': '304', 'Cache-control': 'no-store' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 'no-cache' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 'must-revalidate' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 'proxy-revalidate' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 'max-age=0' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 'max-age=100' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 's-maxage=0' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 's-maxage=100' }, return200AtFirstResponse: true },
+
+ { responseHeaders: {'Status': '304', 'Expires': 'now(-100)', 'Cache-control': 'max-age=100' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Expires': 'now(100)', 'Cache-control': 'max-age=0' }, return200AtFirstResponse: true },
+
+ { responseHeaders: {'Status': '304', 'Cache-control': 'no-store,max-age=100' }, return200AtFirstResponse: true },
+ { responseHeaders: {'Status': '304', 'Cache-control': 'no-cache,max-age=100' }, return200AtFirstResponse: true },
+];
+
+description("Test of cache-control options.");
+
+debug("running " + tests.length + " tests");
+debug("");
+
+runTests(tests);
+
+</script>
+<script src="/js-test-resources/js-test-post.js"></script>
